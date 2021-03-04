@@ -16,9 +16,25 @@ def home():
 
 @app.route('/database')
 def database():
-    db = sqlite3.connect('name.db')
-    return sqlite3.version
+    conn = sqlite3.connect('values.db')
+    cur = conn.cursor()
+    cur.execute("""CREATE TABLE IF NOT EXISTS coord_table (
+        Id INTEGER PRIMARY KEY AUTOINCREMENT,
+        coord_1 float,
+        coord_2 float
+        )""")
+    cur.execute("INSERT INTO coord_table VALUES(:Id, :coord_1, :coord_2)",
+                {'Id': None,
+                 'coord_1': float(4),
+                 'coord_2': float(2)
+                 }
+                )
+    entry = list(cur.execute("SELECT * FROM coord_table"))
+    conn.commit()
 
+    cur.close()
+    conn.close()
+    return jsonify(entry)
 
 @app.route('/predict', methods=['GET'])
 def predict():
