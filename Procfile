@@ -1,2 +1,1 @@
-web: gunicorn script:app
-web: node build/server.js
+web: gunicorn -b :$PORT app:app
