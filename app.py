@@ -2,14 +2,22 @@ import numpy as np
 from flask import Flask, request, jsonify, render_template
 from sklearn.ensemble import AdaBoostRegressor
 import pickle
+import sqlite3
 
 app = Flask(__name__)
 reg1 = pickle.load(open('x_cord', 'rb'))
 reg2 = pickle.load(open('y_cord', 'rb'))
 
+
 @app.route('/')
 def home():
     return "hi"
+
+
+@app.route('/database')
+def database():
+    db = sqlite3.connect('name.db')
+    return sqlite3.version
 
 
 @app.route('/predict', methods=['GET'])
