@@ -11,7 +11,12 @@ DB_HOST = "ec2-3-223-72-172.compute-1.amazonaws.com"
 DB_NAME = "d5habih2mgsfqu"
 DB_USER = "ojwlqolbgopaus"
 DB_PASS = "70d25ffa67f05b1532833e77fa53198f92bde5c67bdf9cbf6fb5815c2faa7487"
-
+conn1 = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
+cur1 = conn1.cursor()
+cur1.execute("CREATE TABLE student (id SERIAL PRIMARY KEY, name VARCHAR);")
+conn1.commit()
+cur1.close()
+conn1.close()
 @app.route('/')
 def home():
     return "hi"
