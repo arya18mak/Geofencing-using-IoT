@@ -22,7 +22,7 @@ def database():
     conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
     cur = conn.cursor()
     cur.execute("CREATE TABLE student (id SERIAL PRIMARY KEY, name VARCHAR);")
-    cur.execute("INSERT INTO student (name) VALUES(%s)", ("Cristina",))
+    cur.execute("INSERT INTO student (name) VALUES(%s)", ("Arya",))
     cur.execute("SELECT * FROM student;")
 
     return "{}".format(cur.fetchall())
