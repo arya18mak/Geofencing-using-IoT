@@ -24,8 +24,9 @@ def database():
     cur.execute("CREATE TABLE student (id SERIAL PRIMARY KEY, name VARCHAR);")
     cur.execute("INSERT INTO student (name) VALUES(%s)", ("Arya",))
     cur.execute("SELECT * FROM student;")
-
-    return "{}".format(cur.fetchall())
+    row1 = cur.fetchall()
+    conn.commit()
+    return "{}".format(row1)
 
 @app.route('/predict', methods=['GET'])
 def predict():
