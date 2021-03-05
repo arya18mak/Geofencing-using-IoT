@@ -26,6 +26,7 @@ def database():
     cur.execute("SELECT * FROM student;")
     row1 = cur.fetchall()
     conn.commit()
+    cur.close()
     conn.close()
     return "{}".format(row1)
 
