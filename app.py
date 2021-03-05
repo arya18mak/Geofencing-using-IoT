@@ -29,6 +29,18 @@ def database():
     conn.close()
     return "{}".format(row1)
 
+@app.route('/count')
+def count():
+    conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
+    cur = conn.cursor()
+    cur.execute("SELECT COUNT(*) FROM student;")
+    row2 = cur.fetchall()
+    conn.commit()
+    cur.close()
+    conn.close()
+    return "{}".format(row2)
+
+
 @app.route('/predict', methods=['GET'])
 def predict():
     rssi = [i.split(',') for i in request.args.values()]
