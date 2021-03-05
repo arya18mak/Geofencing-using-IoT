@@ -4,6 +4,7 @@ from sklearn.ensemble import AdaBoostRegressor
 import pickle
 import sqlite3
 import psycopg2
+
 app = Flask(__name__)
 reg1 = pickle.load(open('x_cord', 'rb'))
 reg2 = pickle.load(open('y_cord', 'rb'))
@@ -22,7 +23,7 @@ def home():
 def database():
     conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
     cur = conn.cursor()
-    if not cur.execute('select exists(select * from information_schema.tables where table_name= "student")'):
+    if cur.execute('select exists(select * from information_schema.tables where table_name= "student")') == False:
         cur.execute("CREATE TABLE student (id SERIAL PRIMARY KEY, name VARCHAR);")
     cur.execute("INSERT INTO student (name) VALUES(%s)", ("Arya",))
     cur.execute("SELECT * FROM student;")
@@ -31,6 +32,7 @@ def database():
     cur.close()
     conn.close()
     return "{}".format(row1)
+
 
 @app.route('/count')
 def count():
