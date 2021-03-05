@@ -22,6 +22,8 @@ def home():
 def database():
     conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
     cur = conn.cursor()
+    if not cur.execute("select * from information_schema.tables where table_name='student'"):
+        cur.execute("CREATE TABLE student (id SERIAL PRIMARY KEY, name VARCHAR);")
     cur.execute("INSERT INTO student (name) VALUES(%s)", ("Arya",))
     cur.execute("SELECT * FROM student;")
     row1 = cur.fetchall()
