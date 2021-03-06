@@ -24,7 +24,7 @@ def home():
 def database():
     conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
     cur = conn.cursor()
-    cur.execute("CREATE TABLE coordinates (id SERIAL PRIMARY KEY, coord1 DECIMAL, coord2 DECIMAL);")
+    #cur.execute("CREATE TABLE coordinates (id SERIAL PRIMARY KEY, coord1 DECIMAL, coord2 DECIMAL);")
     cur.execute("INSERT INTO coordinates (coord1,coord2) VALUES(2,2)")
     cur.execute("SELECT * FROM coordinates;")
     row1 = cur.fetchall()
