@@ -12,7 +12,7 @@ DB_HOST = "ec2-3-223-72-172.compute-1.amazonaws.com"
 DB_NAME = "d5habih2mgsfqu"
 DB_USER = "ojwlqolbgopaus"
 DB_PASS = "70d25ffa67f05b1532833e77fa53198f92bde5c67bdf9cbf6fb5815c2faa7487"
-a = 0
+
 
 
 @app.route('/')
@@ -24,11 +24,9 @@ def home():
 def database():
     conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
     cur = conn.cursor()
-    if a is 0:
-        cur.execute("CREATE TABLE student (id SERIAL PRIMARY KEY, name VARCHAR);")
-        a = 1
-    cur.execute("INSERT INTO student (name) VALUES(%s)", ("Arya",))
-    cur.execute("SELECT * FROM student;")
+    cur.execute("CREATE TABLE coordinates (id SERIAL PRIMARY KEY, coord1 FLOAT, coord2 FLOAT);")
+    cur.execute("INSERT INTO coordinates (coord1,coord2) VALUES(%s%s)", (2, 2))
+    cur.execute("SELECT * FROM coordinates;")
     row1 = cur.fetchall()
     conn.commit()
     cur.close()
