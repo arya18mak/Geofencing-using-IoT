@@ -6,8 +6,9 @@
   <title>Deployment Tutorial 1</title>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
+    var requests = $.get('/data');
     $(document).ready(function(){
-		 $("#div_refresh").load("/insert");
+		 $("#div_refresh").load(requests);
         setInterval(function() {
             $("#div_refresh").load("/insert");
         }, 1000);
