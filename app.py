@@ -18,7 +18,7 @@ DB_PASS = "70d25ffa67f05b1532833e77fa53198f92bde5c67bdf9cbf6fb5815c2faa7487"
 def home():
     conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
     cur = conn.cursor()
-    cur.execute("SELECT coord1,coord2 FROM coordinates where id=Max(id);")
+    cur.execute("SELECT coord1,coord2 FROM coordinates where id=(SELECT max(id) FROM coordinates);")
     row1 = cur.fetchone()
     data1 = row1[0]
     data2 = row1[1]
