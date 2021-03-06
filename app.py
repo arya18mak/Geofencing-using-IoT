@@ -54,7 +54,6 @@ def predict():
     for x in rssi:
         for ele in x:
             float_features.append(float(ele))
-    print(float_features)
     x1 = reg1.predict([float_features])
     y1 = reg2.predict([float_features])
     conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
