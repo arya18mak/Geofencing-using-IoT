@@ -23,7 +23,7 @@ def home():
 def insert():
     conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
     cur = conn.cursor()
-    cur.execute("SELECT * FROM coordinates;")
+    cur.execute("SELECT coord1,coord2 FROM coordinates;")
     row1 = cur.fetchone()
     """data1 = row1[0]
     data2 = row1[1]
