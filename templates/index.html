@@ -6,17 +6,11 @@
   <title>Deployment Tutorial 1</title>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
-function updateMsg() {
-  $.ajax({
-    url: "/insert",
-    cache: false,
-    success: function(html){
-      $("#div_referesh").html(html);
-    }
-   });
-   setTimeout('updateMsg()', 1000);
-}
-updateMsg();
+$(document).ready(function(){
+setInterval(function(){
+
+},2000);
+});
 
 </script>
 </head>
