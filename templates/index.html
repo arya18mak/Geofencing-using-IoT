@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html >
 <head>
-  <meta charset="UTF-8" http-equiv="refresh" content="5">
+  <meta charset="UTF-8">
   <title>Deployment Tutorial 1</title>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+    $(document).ready(function(){
+		 $("#div_refresh").load("index.html");
+        setInterval(function() {
+            $("#div_refresh").load("index.html");
+        }, 1000);
+    });
 
+</script>
 </head>
 
 <body>
- <div>
+ <div id="div_refresh">
 	    <h1>Indoor positioning</h1>
         <h2>x1 : {{ data1 }}</h2>
         <h2>x2 : {{ data2 }}</h2>
