@@ -14,18 +14,24 @@ DB_USER = "ojwlqolbgopaus"
 DB_PASS = "70d25ffa67f05b1532833e77fa53198f92bde5c67bdf9cbf6fb5815c2faa7487"
 
 
-
 @app.route('/')
 def home():
-    return "hi"
+    conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
+    cur = conn.cursor()
+    cur.execute("SELECT coord1,coord2 FROM coordinates where id=Max(id);")
+    row1 = cur.fetchone()
+    data1 = row1[0]
+    data2 = row1[1]
+
+    return render_template("index.html", data1=data1, data2=data2)
 
 
 @app.route('/database')
 def database():
     conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
     cur = conn.cursor()
-    #cur.execute("CREATE TABLE coordinates (id SERIAL PRIMARY KEY, coord1 DECIMAL, coord2 DECIMAL);")
-    #cur.execute("INSERT INTO coordinates (coord1,coord2) VALUES(2,2)")
+    # cur.execute("CREATE TABLE coordinates (id SERIAL PRIMARY KEY, coord1 DECIMAL, coord2 DECIMAL);")
+    # cur.execute("INSERT INTO coordinates (coord1,coord2) VALUES(2,2)")
     cur.execute("SELECT * FROM coordinates;")
     row1 = cur.fetchall()
     conn.commit()
