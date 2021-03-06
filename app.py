@@ -23,13 +23,13 @@ def home():
 def insert():
     conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
     cur = conn.cursor()
-    cur.execute("SELECT coord1,coord2 FROM coordinates where id= 1;")
+    cur.execute("SELECT * FROM coordinates;")
     row1 = cur.fetchone()
-    data1 = row1[0]
+    """data1 = row1[0]
     data2 = row1[1]
     data = [data1, data2]
     response = make_response(json.dumps(data))
-    response.content_type = 'application/json'
+    response.content_type = 'application/json'"""
 
     return "{}".format(row1)
 
