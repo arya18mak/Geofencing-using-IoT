@@ -5,7 +5,7 @@ import pickle
 import sqlite3
 import psycopg2
 
-app = Flask(__name__, template_folder="/templates")
+app = Flask(__name__, template_folder="templates")
 reg1 = pickle.load(open('x_cord', 'rb'))
 reg2 = pickle.load(open('y_cord', 'rb'))
 DB_HOST = "ec2-3-223-72-172.compute-1.amazonaws.com"
