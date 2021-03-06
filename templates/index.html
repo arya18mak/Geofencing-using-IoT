@@ -4,13 +4,21 @@
   <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Deployment Tutorial 1</title>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+    $(document).ready(function(){
+		 $("#div_refresh").load("/insert");
+        setInterval(function() {
+            $("#div_refresh").load("/insert");
+        }, 1000);
+    });
+
+</script>
 </head>
 
 <body>
  <div id="div_refresh">
-	    <h1>Indoor positioning</h1>
-        <h2>x1 : {{ data1 }}</h2>
-        <h2>x2 : {{ data2 }}</h2>
+
  </div>
 </body>
 </html>

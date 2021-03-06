@@ -1,10 +1,10 @@
 import numpy as np
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, make_response
 from sklearn.ensemble import AdaBoostRegressor
 import pickle
 import sqlite3
 import psycopg2
-
+import json
 app = Flask(__name__, template_folder="templates")
 reg1 = pickle.load(open('x_cord', 'rb'))
 reg2 = pickle.load(open('y_cord', 'rb'))
@@ -16,14 +16,22 @@ DB_PASS = "70d25ffa67f05b1532833e77fa53198f92bde5c67bdf9cbf6fb5815c2faa7487"
 
 @app.route('/')
 def home():
+    return render_template("index.html")
+
+
+@app.route('/insert')
+def insert():
     conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
     cur = conn.cursor()
     cur.execute("SELECT coord1,coord2 FROM coordinates where id=(SELECT max(id) FROM coordinates);")
     row1 = cur.fetchone()
     data1 = row1[0]
     data2 = row1[1]
+    data = [data1, data2]
+    response = make_response(json.dumps(data))
+    response.content_type = 'application/json'
 
-    return render_template("index.html", data1=data1, data2=data2)
+    return response
 
 
 @app.route('/database')
