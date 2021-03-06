@@ -58,7 +58,7 @@ def predict():
     y1 = reg2.predict([float_features])
     conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
     cur = conn.cursor()
-    cur.execute("INSERT INTO coordinates (coord1,coord2) VALUES(coord1,coord2)", {'coord1': x1, 'coord2': y1})
+    cur.execute("INSERT INTO coordinates VALUES(:coord1,:coord2)", {'coord1': x1, 'coord2': y1})
     conn.commit()
     cur.close()
     conn.close()
