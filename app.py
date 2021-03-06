@@ -25,7 +25,7 @@ def database():
     conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
     cur = conn.cursor()
     #cur.execute("CREATE TABLE coordinates (id SERIAL PRIMARY KEY, coord1 DECIMAL, coord2 DECIMAL);")
-    cur.execute("INSERT INTO coordinates (coord1,coord2) VALUES(2,2)")
+    #cur.execute("INSERT INTO coordinates (coord1,coord2) VALUES(2,2)")
     cur.execute("SELECT * FROM coordinates;")
     row1 = cur.fetchall()
     conn.commit()
@@ -57,8 +57,14 @@ def predict():
     print(float_features)
     x1 = reg1.predict([float_features])
     y1 = reg2.predict([float_features])
+    conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
+    cur = conn.cursor()
+    cur.execute("INSERT INTO coordinates (coord1,coord2) VALUES(:coord1,:coord2)", {'coord1': x1, 'coord2': y1})
+    conn.commit()
+    cur.close()
+    conn.close()
 
-    return "X: {}, Y: {}".format(x1, y1)
+    return "status:200"
 
 
 """@app.route('/results', methods=['POST'])
