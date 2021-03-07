@@ -8,9 +8,10 @@
 <script>
 $(document).ready(function(){
 var requests = $.get('/insert')
-$('#div_refresh').load(requests)
+$('#div_refresh').load(requests.data)
 setInterval(function() {
-            $("#div_refresh").load(requests);
+            var requests = $.get('/insert')
+            $("#div_refresh").load(requests.data);
         }, 1000);
 });
 
