@@ -7,9 +7,10 @@
     <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
 $(document).ready(function(){
-setInterval(function(){
-
-},2000);
+var requests = $.get('/insert')
+function(requests.data){
+$('#div_refresh').html(requests.data)
+}
 });
 
 </script>
