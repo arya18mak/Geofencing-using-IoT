@@ -6,10 +6,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     $(document).ready(function(){
+    setInterval(function(){
    $.get("/insert", function(data){
     $('#coord1').text("x1: " + data.x1);
     $('#coord2').text("y1: " + data.y1);
   });
+  }, 1000);
     });
 </script>
 </head>
