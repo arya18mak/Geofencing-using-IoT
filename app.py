@@ -27,11 +27,11 @@ def insert():
     row1 = cur.fetchone()
     data1 = row1[0]
     data2 = row1[1]
-    data = [data1, data2]
+    """data = [data1, data2]
     response = make_response(json.dumps(data))
-    response.content_type = 'application/json'
+    response.content_type = 'application/json'"""
 
-    return response
+    return jsonify(data1, data2)
 
 
 @app.route('/database')
