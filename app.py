@@ -27,8 +27,8 @@ def insert():
     row1 = cur.fetchone()
     data1 = float(row1[0])
     data2 = float(row1[1])
-    data = [data1, data2]
-    return "{}".format(data)
+
+    return jsonify(x1=data1, y1=data2)
 
 
 @app.route('/database')
