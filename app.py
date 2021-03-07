@@ -31,7 +31,7 @@ def insert():
     response = make_response(json.dumps(data))
     response.content_type = 'application/json'"""
 
-    return jsonify(data1)
+    return "{}".format(data1)
 
 
 @app.route('/database')
