@@ -25,11 +25,9 @@ def insert():
     cur = conn.cursor()
     cur.execute("SELECT coord1,coord2 FROM coordinates ORDER BY id DESC LIMIT 1;")
     row1 = cur.fetchone()
-    data1 = row1[0]
-    data2 = row1[1]
-
+    data1 = float(row1[0])
+    data2 = float(row1[1])
     data = [data1, data2]
-
     return "{}".format(data)
 
 
