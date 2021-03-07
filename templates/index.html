@@ -6,7 +6,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     $(document).ready(function(){
-    $("#show").text("hahahahahahaha")
+   $.get("/data", function(data, status){
+    alert("Data: " + data[0] + "\nStatus: " + status);
+  });
     });
 </script>
 </head>
