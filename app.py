@@ -28,7 +28,7 @@ def insert():
     data1 = row1[0]
     data2 = row1[1]
 
-    return "{}".format(data1,data2)
+    return "{},{}".format(data1, data2)
 
 
 @app.route('/database')
