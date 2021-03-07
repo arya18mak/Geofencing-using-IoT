@@ -29,11 +29,8 @@ def insert():
     data2 = row1[1]
 
     data = [data1, data2]
-    response = make_response(json.dumps(data))
 
-    response.content_type = 'application/json'
-
-    return response
+    return "{}".format(data)
 
 
 @app.route('/database')
