@@ -12,9 +12,10 @@
    $.get("/insert", function(data){
     $('#coord1').text("x1: " + data.x1);
     $('#coord2').text("y1: " + data.y1);
+
     var trace1 = {
-      x: [4],
-      y: [5],
+      x: [number(data.x1)],
+      y: [number(data.x2)],
       mode: 'markers',
       type: 'scatter'
     };
