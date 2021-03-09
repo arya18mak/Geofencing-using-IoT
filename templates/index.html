@@ -12,27 +12,23 @@
    $.get("/insert", function(data){
     $('#coord1').text("x1: " + data.x1);
     $('#coord2').text("y1: " + data.y1);
-    var ctx = $("#myChart").getContext('2d');
-    var dat = [{
-                x: 5,
-                y: 4
-            }]
-    var options = {responsive: true, // Instruct chart js to respond nicely.
-    maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height
+    var trace1 = {
+      x: [data.x1],
+      y: [data.x2],
+      mode: 'markers',
+      type: 'scatter'
+    };
+    var layout = {
+      xaxis: {
+        range: [ 0, 18 ]
+      },
+      yaxis: {
+        range: [ 0, 10 ]
+      },
+      title:'indoor-position'
     };
 
-    var myChart = new Chart(ctx, {
-    type: 'scatter',
-    data: {
-        datasets: [{
-                label: 'Position', // Name the series
-                data: dat, // Specify the data values array
-          borderColor: '#2196f3', // Add custom color border
-          backgroundColor: '#2196f3', // Add custom color background (Points and Fill)
-            }]
-    },
-    options: options
-    });
+    Plotly.newPlot('myDiv', data, layout);
 
     });
     }, 1000);
