@@ -13,11 +13,10 @@
     $('#coord2').text("y1: " + data.y1);
 
     var trace1 = {
-      x: [5],
-      y: [8],
+      x: [data.x1],
+      y: [data.y1],
       mode: 'markers',
       type: 'scatter'
-      marker: { color: 'rgb(255,0,0)', size:20}
     };
     var layout = {
       xaxis: {
@@ -33,7 +32,7 @@
     Plotly.newPlot('myDiv', xyz, layout);
 
     });
-    }, 1000);
+    }, 3000);
     });
 </script>
 </head>
