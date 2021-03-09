@@ -12,16 +12,16 @@
    $.get("/insert", function(data){
     $('#coord1').text("x1: " + data.x1);
     $('#coord2').text("y1: " + data.y1);
-    var ctx = document.getElementById("myChart").getContext('2d');
+    var ctx = $("#myChart").getContext('2d');
     var dat = [{
                 x: 5,
                 y: 4
             }]
     var options = {responsive: true, // Instruct chart js to respond nicely.
     maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height
-};
+    };
 
-var myChart = new Chart(ctx, {
+    var myChart = new Chart(ctx, {
     type: 'scatter',
     data: {
         datasets: [{
@@ -32,7 +32,8 @@ var myChart = new Chart(ctx, {
             }]
     },
     options: options
-});
+    });
+
     });
     }, 1000);
     });
