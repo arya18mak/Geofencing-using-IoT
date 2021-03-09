@@ -12,6 +12,24 @@
    $.get("/insert", function(data){
     $('#coord1').text("x1: " + data.x1);
     $('#coord2').text("y1: " + data.y1);
+    var ctx = document.getElementById("myChart").getContext('2d');
+    var dat = [data]
+    var options = {responsive: true, // Instruct chart js to respond nicely.
+    maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height
+};
+
+var myChart = new Chart(ctx, {
+    type: 'scatter',
+    data: {
+        datasets: [{
+                label: 'Position', // Name the series
+                data: dat, // Specify the data values array
+          borderColor: '#2196f3', // Add custom color border
+          backgroundColor: '#2196f3', // Add custom color background (Points and Fill)
+            }]
+    },
+    options: options
+});
     });
     }, 1000);
     });
@@ -24,5 +42,6 @@
      <h3 id="coord1"></h3>
      <h3 id="coord2"></h3>
  </div>
+<canvas id="myChart"></canvas>
 </body>
 </html>
