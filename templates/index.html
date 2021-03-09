@@ -11,7 +11,7 @@
     $(document).ready(function(){
     setInterval(function(){
    $.get("/insert", function(data){
-    $('#coords').text("x: " + data.x1 + "y:" + data.y1);
+    $('#coords').text("x: " + data.x1 + "  " + "y:" + data.y1);
 
     var trace1 = {
       x: [data.x1],
@@ -55,7 +55,7 @@
 <div class="container">
 <div class="jumbotron">
     <h3 align="center"><b>Indoor Positioning</b></h3>
-    <h5 id="coords" align="center"></h5>
+    <h4 id="coords" align="center"></h4>
 </div>
     <div class="row my-2">
         <div class="col">
