@@ -12,15 +12,6 @@
    $.get("/insert", function(data){
     $('#coord1').text("x1: " + data.x1);
     $('#coord2').text("y1: " + data.y1);
-    var trace1 = {
-    x: [data.x1, data.x2],
-    y: [data.x2, data.x1],
-    mode: 'markers',
-    type: 'scatter'
-    };
-    var xyz = [trace1];
-    Plotly.newPlot('myDiv', xyz);
-  });
 
   }, 1000);
     });
