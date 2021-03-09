@@ -10,12 +10,12 @@
     $(document).ready(function(){
     setInterval(function(){
    $.get("/insert", function(data){
-    $('#coord1').text("x1: " + data.x1);
+    $('#coord1').text("x1: " + typeof(data.x1));
     $('#coord2').text("y1: " + data.y1);
 
     var trace1 = {
-      x: [number(data.x1)],
-      y: [number(data.x2)],
+      x: [7],
+      y: [1],
       mode: 'markers',
       type: 'scatter'
     };
