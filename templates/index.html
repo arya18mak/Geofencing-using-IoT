@@ -11,6 +11,30 @@
     $('#coord1').text("x1: " + data.x1);
     $('#coord2').text("y1: " + data.y1);
   });
+  var trace1 = {
+  x: [1, 2, 3, 4],
+  y: [10, 15, 13, 17],
+  mode: 'markers',
+  type: 'scatter'
+};
+
+var trace2 = {
+  x: [2, 3, 4, 5],
+  y: [16, 5, 11, 9],
+  mode: 'lines',
+  type: 'scatter'
+};
+
+var trace3 = {
+  x: [1, 2, 3, 4],
+  y: [12, 9, 15, 12],
+  mode: 'lines+markers',
+  type: 'scatter'
+};
+
+var data = [trace1, trace2, trace3];
+
+Plotly.newPlot('myDiv', data);
   }, 1000);
     });
 </script>
@@ -22,5 +46,6 @@
      <h3 id="coord1"></h3>
      <h3 id="coord2"></h3>
  </div>
+<canvas id="myDiv"></canvas>
 </body>
 </html>
