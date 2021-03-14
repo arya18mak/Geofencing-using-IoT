@@ -2,7 +2,6 @@ import numpy as np
 from flask import Flask, request, jsonify, render_template, make_response
 from sklearn.ensemble import AdaBoostRegressor
 import pickle
-import sqlite3
 import psycopg2
 import json
 app = Flask(__name__, template_folder="templates")
