@@ -5,8 +5,9 @@ import pickle
 import psycopg2
 import json
 app = Flask(__name__, template_folder="templates")
-reg1 = pickle.load(open('x_cord', 'rb'))
-reg2 = pickle.load(open('y_cord', 'rb'))
+#reg1 = pickle.load(open('x_cord', 'rb'))
+#reg2 = pickle.load(open('y_cord', 'rb'))
+reg3 = pickle.load(open('classifier', 'rb'))
 DB_HOST = "ec2-3-223-72-172.compute-1.amazonaws.com"
 DB_NAME = "d5habih2mgsfqu"
 DB_USER = "ojwlqolbgopaus"
@@ -22,12 +23,12 @@ def home():
 def insert():
     conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
     cur = conn.cursor()
-    cur.execute("SELECT coord1,coord2 FROM coordinates ORDER BY id DESC LIMIT 1;")
+    cur.execute("SELECT coord1,coord2,class FROM coordinates ORDER BY id DESC LIMIT 1;")
     row1 = cur.fetchone()
     data1 = float(row1[0])
     data2 = float(row1[1])
-
-    return jsonify(x1=data1, y1=data2)
+    data3 = float(row1[2])
+    return jsonify(x1=data1, y1=data2, cl=data3)
 
 
 @app.route('/database')
@@ -64,11 +65,15 @@ def predict():
     for x in rssi:
         for ele in x:
             float_features.append(float(ele))
-    x1 = reg1.predict([float_features])
-    y1 = reg2.predict([float_features])
+    #x1 = reg1.predict([float_features])
+    #y1 = reg2.predict([float_features])
+    x1 = 2
+    y1 = 2
+    class_0 = reg3.predict([float_features])
     conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
     cur = conn.cursor()
-    cur.execute("INSERT INTO coordinates(coord1,coord2) VALUES(%s,%s)", ("{}".format(x1[0]), "{}".format(y1[0])))
+    cur.execute("INSERT INTO coordinates(coord1,coord2,class) VALUES(%s,%s,%s)", ("{}".format(x1), "{}".format(y1)
+                                                                                  , "{}".format(class_0[0])))
     conn.commit()
     cur.close()
     conn.close()

@@ -11,7 +11,7 @@
     $(document).ready(function(){
     setInterval(function(){
    $.get("/insert", function(data){
-    $('#coords').text("x: " + data.x1 + " and " + "y: " + data.y1);
+    $('#coords').text("x: " + data.x1 + " and " + "y: " + data.y1 + "class: " + data.class);
 
     var trace1 = {
       x: [data.x1],
