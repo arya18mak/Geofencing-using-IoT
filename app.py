@@ -35,8 +35,8 @@ def insert():
 def database():
     conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
     cur = conn.cursor()
-    cur.execute("CREATE TABLE coordinates (id SERIAL PRIMARY KEY, coord1 DECIMAL, coord2 DECIMAL,class INT);")
-    cur.execute("INSERT INTO coordinates (coord1,coord2,class) VALUES(2,2,0)")
+    #cur.execute("CREATE TABLE coordinates (id SERIAL PRIMARY KEY, coord1 DECIMAL, coord2 DECIMAL,class INT);")
+    #cur.execute("INSERT INTO coordinates (coord1,coord2,class) VALUES(2,2,0)")
     cur.execute("SELECT * FROM coordinates;")
     row1 = cur.fetchall()
     conn.commit()
