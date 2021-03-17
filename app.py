@@ -105,11 +105,11 @@ def check():
     update_time = update_time.replace(tzinfo=None)
     time = datetime.now()
     diff = time - update_time
-    #mini = diff.total_seconds()//60
-    #if mini >= 1:
-        # requests.get(url2)
+    mini = diff.total_seconds()//60
+    if mini >= 1:
+        requests.get(url2)
 
-    return "hahaah"
+    return "tampering_is_under_check"
 
 
 """@app.route('/results', methods=['POST'])
