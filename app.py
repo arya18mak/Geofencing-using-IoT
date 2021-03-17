@@ -43,9 +43,9 @@ def database():
     conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
     cur = conn.cursor()
 
-    #cur.execute("CREATE TABLE coordinates (id SERIAL PRIMARY KEY,ts TIMESTAMPTZ,coord1 DECIMAL, coord2 DECIMAL"
-     #            ",class INT);")
-    #cur.execute("INSERT INTO coordinates (ts,coord1,coord2,class) VALUES('2021-03-17 12:18:28.545547',2,2,0)")
+    # cur.execute("CREATE TABLE coordinates (id SERIAL PRIMARY KEY,ts TIMESTAMPTZ,coord1 DECIMAL, coord2 DECIMAL"
+    #            ",class INT);")
+    # cur.execute("INSERT INTO coordinates (ts,coord1,coord2,class) VALUES('2021-03-17 12:18:28.545547',2,2,0)")
     cur.execute("SELECT * FROM coordinates;")
     row1 = cur.fetchall()
     conn.commit()
@@ -103,9 +103,10 @@ def check():
     row1 = cur.fetchone()
     update_time = row1[0]
     time = datetime.now()
-    #diff = time - update_time
-    #if (diff.total_seconds()//60) >= 1:
-     #   requests.get(url2)
+    diff = time - update_time
+    mini = diff.total_seconds() // 60
+    if mini >= 1:
+        requests.get(url2)
 
     return "hahaah"
 
