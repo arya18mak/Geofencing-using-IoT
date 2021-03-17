@@ -60,7 +60,10 @@
     Plotly.newPlot('myDiv', xyz, layout);
 
     });
-    }, 500);
+    $.get("/check_tampering", function(data){
+        $('#tamp').text(data)
+    });
+    }, 2000);
     });
 </script>
 </head>
@@ -82,5 +85,6 @@
         </div>
     </div>
 </div>
+<h2 id ="tamp"></h2>
 </body>
 </html>

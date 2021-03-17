@@ -16,7 +16,8 @@ DB_HOST = "ec2-3-223-72-172.compute-1.amazonaws.com"
 DB_NAME = "d5habih2mgsfqu"
 DB_USER = "ojwlqolbgopaus"
 DB_PASS = "70d25ffa67f05b1532833e77fa53198f92bde5c67bdf9cbf6fb5815c2faa7487"
-url = "https://maker.ifttt.com/trigger/fence%20violation/with/key/doR89Ub-ekPPqyN7WnN23s"
+url1 = "https://maker.ifttt.com/trigger/fence_violation/with/key/doR89Ub-ekPPqyN7WnN23s"
+url2 = "https://maker.ifttt.com/trigger/check_tampering/with/key/doR89Ub-ekPPqyN7WnN23s"
 consistency = [0, 0, 0]
 
 
@@ -92,6 +93,23 @@ def predict():
     conn.close()
 
     return "status:200"
+
+@app.route('/check_tampering')
+def check_tampering():
+    conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
+    cur = conn.cursor()
+    cur.execute("SELECT ts FROM coordinates ORDER BY id DESC LIMIT 1;")
+    row1 = cur.fetchone()
+    update_time = row1[0]
+    server_timezone = pytz.timezone("Asia/Kolkata")
+    time = datetime.now(server_timezone)
+    diff = time - update_time
+    if diff.minute >= 1:
+        requests.get(url2)
+
+    return "tampering_under_check"
+
+
 
 
 """@app.route('/results', methods=['POST'])
