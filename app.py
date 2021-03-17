@@ -106,8 +106,8 @@ def check():
     diff = time - update_time
     if diff.minute >= 1:
         requests.get(url2)
-
-    return "tampering_under_check"
+    string = "tampering_under_check"
+    return jsonify(d=string)
 
 
 """@app.route('/results', methods=['POST'])
