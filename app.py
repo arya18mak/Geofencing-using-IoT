@@ -45,7 +45,7 @@ def database():
 
     cur.execute("CREATE TABLE coordinates (id SERIAL PRIMARY KEY,ts TIMESTAMPTZ,coord1 DECIMAL, coord2 DECIMAL"
                  ",class INT);")
-    cur.execute("INSERT INTO coordinates (ts,coord1,coord2,class) VALUES('2021-03-17 12:18:28.545547+5:30',2,2,0)")
+    cur.execute("INSERT INTO coordinates (ts,coord1,coord2,class) VALUES('2021-03-17 12:18:28.545547',2,2,0)")
     cur.execute("SELECT * FROM coordinates;")
     row1 = cur.fetchall()
     conn.commit()
