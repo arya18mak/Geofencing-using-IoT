@@ -96,7 +96,7 @@ def predict():
 
 
 @app.route('/check')
-def check_tampering():
+def check():
     conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
     cur = conn.cursor()
     cur.execute("SELECT ts FROM coordinates ORDER BY id DESC LIMIT 1;")
