@@ -81,7 +81,7 @@ def predict():
     consistency[1] = consistency[2]
     consistency[2] = class_0[0]
     server_timezone = pytz.timezone('Asia/Kolkata')
-    time = datetime.now(server_timezone)
+    time = datetime.now()
     if consistency.count(1) > 2:
         requests.get(url1)
     conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
@@ -103,7 +103,7 @@ def check_tampering():
     row1 = cur.fetchone()
     update_time = row1[0]
     server_timezone = pytz.timezone('Asia/Kolkata')
-    time = datetime.now(server_timezone)
+    time = datetime.now()
     diff = time - update_time
     if diff.minute >= 1:
         requests.get(url2)
