@@ -102,6 +102,7 @@ def check():
     cur.execute("SELECT ts FROM coordinates ORDER BY id DESC LIMIT 1;")
     row1 = cur.fetchone()
     update_time = row1[0]
+    update_time = update_time.replace(tzinfo=None)
     time = datetime.now()
     diff = time - update_time
     #mini = diff.total_seconds()//60
