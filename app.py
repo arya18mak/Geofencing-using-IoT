@@ -103,9 +103,9 @@ def check():
     row1 = cur.fetchone()
     update_time = row1[0]
     time = datetime.now()
-    diff = time - update_time
-    if (diff.total_seconds()//60) >= 1:
-        requests.get(url2)
+    #diff = time - update_time
+    #if (diff.total_seconds()//60) >= 1:
+     #   requests.get(url2)
 
     return "hahaah"
 
