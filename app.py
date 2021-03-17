@@ -4,6 +4,7 @@ from sklearn.ensemble import AdaBoostRegressor
 import pickle
 import psycopg2
 import requests
+from datetime import datetime
 import json
 
 app = Flask(__name__, template_folder="templates")
@@ -39,8 +40,9 @@ def insert():
 def database():
     conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
     cur = conn.cursor()
-    # cur.execute("CREATE TABLE coordinates (id SERIAL PRIMARY KEY, coord1 DECIMAL, coord2 DECIMAL,class INT);")
-    # cur.execute("INSERT INTO coordinates (coord1,coord2,class) VALUES(2,2,0)")
+    cur.execute("CREATE TABLE coordinates (id SERIAL PRIMARY KEY,ts TIMESTAMP,coord1 DECIMAL, coord2 DECIMAL"
+                ",class INT);")
+    cur.execute("INSERT INTO coordinates (ts,coord1,coord2,class) VALUES('2021-03-17 12:18:28.545547',2,2,0)")
     cur.execute("SELECT * FROM coordinates;")
     row1 = cur.fetchall()
     conn.commit()
@@ -75,12 +77,13 @@ def predict():
     consistency[0] = consistency[1]
     consistency[1] = consistency[2]
     consistency[2] = class_0[0]
+    time = datetime.now()
     if consistency.count(1) > 2:
         requests.get(url)
     conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
     cur = conn.cursor()
-    cur.execute("INSERT INTO coordinates(coord1,coord2,class) VALUES(%s,%s,%s)", ("{}".format(x1[0]), "{}".format(y1[0])
-                                                                                  , "{}".format(class_0[0])))
+    cur.execute("INSERT INTO coordinates(ts,coord1,coord2,class) VALUES(%s,%s,%s,%s)",
+                ("{}".format(time), "{}".format(x1[0]), "{}".format(y1[0]), "{}".format(class_0[0])))
     conn.commit()
     cur.close()
     conn.close()
