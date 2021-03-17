@@ -3,7 +3,9 @@ from flask import Flask, request, jsonify, render_template, make_response
 from sklearn.ensemble import AdaBoostRegressor
 import pickle
 import psycopg2
+import requests
 import json
+
 app = Flask(__name__, template_folder="templates")
 reg1 = pickle.load(open('x_cord', 'rb'))
 reg2 = pickle.load(open('y_cord', 'rb'))
@@ -12,6 +14,8 @@ DB_HOST = "ec2-3-223-72-172.compute-1.amazonaws.com"
 DB_NAME = "d5habih2mgsfqu"
 DB_USER = "ojwlqolbgopaus"
 DB_PASS = "70d25ffa67f05b1532833e77fa53198f92bde5c67bdf9cbf6fb5815c2faa7487"
+url = "https://maker.ifttt.com/trigger/fence%20violation/with/key/doR89Ub-ekPPqyN7WnN23s"
+consistency = [0, 0, 0]
 
 
 @app.route('/')
@@ -35,8 +39,8 @@ def insert():
 def database():
     conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
     cur = conn.cursor()
-    #cur.execute("CREATE TABLE coordinates (id SERIAL PRIMARY KEY, coord1 DECIMAL, coord2 DECIMAL,class INT);")
-    #cur.execute("INSERT INTO coordinates (coord1,coord2,class) VALUES(2,2,0)")
+    # cur.execute("CREATE TABLE coordinates (id SERIAL PRIMARY KEY, coord1 DECIMAL, coord2 DECIMAL,class INT);")
+    # cur.execute("INSERT INTO coordinates (coord1,coord2,class) VALUES(2,2,0)")
     cur.execute("SELECT * FROM coordinates;")
     row1 = cur.fetchall()
     conn.commit()
@@ -68,6 +72,11 @@ def predict():
     x1 = reg1.predict([float_features])
     y1 = reg2.predict([float_features])
     class_0 = reg3.predict([float_features])
+    consistency[0] = consistency[1]
+    consistency[1] = consistency[2]
+    consistency[2] = class_0[0]
+    if consistency.count(1) > 2:
+        requests.get(url)
     conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
     cur = conn.cursor()
     cur.execute("INSERT INTO coordinates(coord1,coord2,class) VALUES(%s,%s,%s)", ("{}".format(x1[0]), "{}".format(y1[0])
