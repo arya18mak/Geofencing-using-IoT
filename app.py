@@ -5,6 +5,7 @@ import pickle
 import psycopg2
 import requests
 from datetime import datetime
+import pytz
 import json
 
 app = Flask(__name__, template_folder="templates")
@@ -78,7 +79,8 @@ def predict():
     consistency[0] = consistency[1]
     consistency[1] = consistency[2]
     consistency[2] = class_0[0]
-    time = datetime.now()
+    server_timezone = pytz.timezone("Asia/Kolkata")
+    time = datetime.now(server_timezone)
     if consistency.count(1) > 2:
         requests.get(url)
     conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
