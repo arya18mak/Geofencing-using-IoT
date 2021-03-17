@@ -104,9 +104,9 @@ def check():
     update_time = row1[0]
     time = datetime.now()
     diff = time - update_time
-    mini = diff.total_seconds() // 60
-    if mini >= 1:
-        requests.get(url2)
+    #mini = diff.total_seconds()//60
+    #if mini >= 1:
+        # requests.get(url2)
 
     return "hahaah"
 
