@@ -102,7 +102,6 @@ def check_tampering():
     cur.execute("SELECT ts FROM coordinates ORDER BY id DESC LIMIT 1;")
     row1 = cur.fetchone()
     update_time = row1[0]
-    server_timezone = pytz.timezone('Asia/Kolkata')
     time = datetime.now()
     diff = time - update_time
     if diff.minute >= 1:
