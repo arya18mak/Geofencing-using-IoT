@@ -60,10 +60,6 @@
     Plotly.newPlot('myDiv', xyz, layout);
     });
     }, 2000);
-    setInterval(function(){
-    $.get("/check", function(data){
-        $('#tamp').text("hi" + data.d)
-    });, 2000);
     });
 </script>
 </head>
