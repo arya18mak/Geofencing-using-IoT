@@ -83,7 +83,7 @@ def predict():
     server_timezone = pytz.timezone("Asia/Kolkata")
     time = datetime.now(server_timezone)
     if consistency.count(1) > 2:
-        requests.get(url)
+        requests.get(url1)
     conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
     cur = conn.cursor()
     cur.execute("INSERT INTO coordinates(ts,coord1,coord2,class) VALUES(%s,%s,%s,%s)",
