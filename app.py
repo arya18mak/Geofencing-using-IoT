@@ -44,8 +44,7 @@ def database():
     cur = conn.cursor()
     cur.execute("CREATE TABLE coordinates (id SERIAL PRIMARY KEY,ts TIMESTAMPTZ,coord1 DECIMAL, coord2 DECIMAL"
               ",class INT);")
-    cur.execute("INSERT INTO coordinates (ts,coord1,coord2,class) VALUES('2021-03-17 12:18:28.545547',2,2,0)")
-    cur.execute("SET timezone = 'Asia/Kolkata';")
+    cur.execute("INSERT INTO coordinates (ts,coord1,coord2,class) VALUES('2021-03-17 12:18:28.545547+5:30',2,2,0)")
     cur.execute("SELECT * FROM coordinates;")
     row1 = cur.fetchall()
     conn.commit()
@@ -80,7 +79,8 @@ def predict():
     consistency[0] = consistency[1]
     consistency[1] = consistency[2]
     consistency[2] = class_0[0]
-    time = datetime.now()
+    server_timezone = pytz.timezone('Asia/Kolkata')
+    time = datetime.now(server_timezone)
     if consistency.count(1) > 2:
         requests.get(url1)
     conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
@@ -101,7 +101,8 @@ def check_tampering():
     cur.execute("SELECT ts FROM coordinates ORDER BY id DESC LIMIT 1;")
     row1 = cur.fetchone()
     update_time = row1[0]
-    time = datetime.now()
+    server_timezone = pytz.timezone('Asia/Kolkata')
+    time = datetime.now(server_timezone)
     diff = time - update_time
     if diff.minute >= 1:
         requests.get(url2)
