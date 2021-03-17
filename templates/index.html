@@ -59,6 +59,9 @@
     var xyz = [trace1];
     Plotly.newPlot('myDiv', xyz, layout);
     });
+    $.get("/check", function(data){
+    $('#tamp').text("hi" + data.d);
+    });
     }, 2000);
     });
 </script>

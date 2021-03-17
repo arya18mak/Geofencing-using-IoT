@@ -104,7 +104,7 @@ def check():
     update_time = row1[0]
     time = datetime.now()
     diff = time - update_time
-    if diff.minute >= 1:
+    if (diff.total_seconds()//60) >= 1:
         requests.get(url2)
     string = "tampering_under_check"
     return jsonify(d=string)
