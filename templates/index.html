@@ -60,7 +60,7 @@
     Plotly.newPlot('myDiv', xyz, layout);
 
     });
-    $.get("/check_tampering", function(data){
+    $.get("/check", function(data){
         $('#tamp').text(data)
     });
     }, 2000);

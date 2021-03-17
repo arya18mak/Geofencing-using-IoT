@@ -42,10 +42,10 @@ def insert():
 def database():
     conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
     cur = conn.cursor()
-    #cur.execute("CREATE TABLE coordinates (id SERIAL PRIMARY KEY,ts TIMESTAMP,coord1 DECIMAL, coord2 DECIMAL"
-                #
-    #",class INT);")
-    #cur.execute("INSERT INTO coordinates (ts,coord1,coord2,class) VALUES('2021-03-17 12:18:28.545547',2,2,0)")
+    # cur.execute("CREATE TABLE coordinates (id SERIAL PRIMARY KEY,ts TIMESTAMP,coord1 DECIMAL, coord2 DECIMAL"
+    #
+    # ",class INT);")
+    # cur.execute("INSERT INTO coordinates (ts,coord1,coord2,class) VALUES('2021-03-17 12:18:28.545547',2,2,0)")
     cur.execute("SELECT * FROM coordinates;")
     row1 = cur.fetchall()
     conn.commit()
@@ -94,7 +94,8 @@ def predict():
 
     return "status:200"
 
-@app.route('/check_tampering')
+
+@app.route('/check')
 def check_tampering():
     conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
     cur = conn.cursor()
@@ -108,8 +109,6 @@ def check_tampering():
         requests.get(url2)
 
     return "tampering_under_check"
-
-
 
 
 """@app.route('/results', methods=['POST'])
