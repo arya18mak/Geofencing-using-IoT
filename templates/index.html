@@ -11,8 +11,8 @@
     $(document).ready(function(){
     setInterval(function(){
    $.get("/insert", function(data){
-    $('#coords').text("x: " + data.x1 + " and " + "y: " + data.y1 + "  class: " + data.cl);
-
+    $('#coordscl').text("  Class:  " + data.cl);
+    $('#coordsxy').text("x: " + data.x1 + " and " + "y: " + data.y1);
     var trace1 = {
       x: [data.x1],
       y: [data.y1],
@@ -62,20 +62,26 @@
     $.get("/check", function(data){
     $('#tamp').text("hi" + data);
     });
-    }, 5000);
+    }, 3000);
     });
 </script>
 </head>
 
 <body>
 <div class="jumbotron bg-dark">
-    <h2 align="center"><b>Indoor Positioning</b></h2>
+    <h2 align="center"><b>Geofencing using IoT</b></h2>
 
 </div>
 <div class="container">
     <div class="row">
         <div class="col">
-            <div class="well"><h4 id="coords" align="center"></h4>
+            <div class="well"><b><h3 id="coordscl" align="center"></h3></b>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="well"><h5 id="coordsxy" align="center"></h5>
             </div>
         </div>
     </div>
@@ -84,7 +90,11 @@
             <div id="myDiv"></div>
         </div>
     </div>
+    <div class="row my-2">
+        <div class="col">
+            <h6 id="tamp"></h6>
+        </div>
+    </div>
 </div>
-<h5 id="tamp"></h5>
 </body>
 </html>
