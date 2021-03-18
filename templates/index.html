@@ -60,7 +60,7 @@
     Plotly.newPlot('myDiv', xyz, layout);
     });
     $.get("/check", function(data){
-    $('#tamp').text("hi" + data);
+    $('#tamp').text("Notification: " + data);
     });
     }, 3000);
     });
@@ -81,7 +81,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <div class="well"><h5 id="coordsxy" align="center"></h5>
+            <div class="well"><h4 id="coordsxy" align="center"></h4>
             </div>
         </div>
     </div>
@@ -92,7 +92,7 @@
     </div>
     <div class="row my-2">
         <div class="col">
-            <h6 id="tamp"></h6>
+            <h4 id="tamp" align="center"></h4>
         </div>
     </div>
 </div>
