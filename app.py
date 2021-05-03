@@ -74,8 +74,8 @@ def predict():
     for x in rssi:
         for ele in x:
             float_features.append(float(ele))
-    # x1 = reg1.predict([float_features])
-    # y1 = reg2.predict([float_features])
+    x1 = reg1.predict([float_features])
+    y1 = reg2.predict([float_features])
     class_0 = reg3.predict([float_features])
     consistency[0] = consistency[1]
     consistency[1] = consistency[2]
@@ -87,7 +87,7 @@ def predict():
     conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
     cur = conn.cursor()
     cur.execute("INSERT INTO coordinates(ts,coord1,coord2,class) VALUES(%s,%s,%s,%s)",
-                ("{}".format(time), 2, 2, "{}".format(class_0[0])))
+                ("{}".format(time), "{}".format(x1[0]), "{}".format(y1[0]), "{}".format(class_0[0])))
     conn.commit()
     cur.close()
     conn.close()
