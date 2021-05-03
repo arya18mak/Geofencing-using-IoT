@@ -82,7 +82,7 @@ def predict():
     consistency[2] = class_0[0]
     server_timezone = pytz.timezone('Asia/Kolkata')
     time = datetime.now()
-    if consistency.count(1) > 2:
+    if consistency.count(1) > 4:
         requests.get(url1)
     conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
     cur = conn.cursor()
