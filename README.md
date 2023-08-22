@@ -6,3 +6,5 @@ We've developed a wearable consumer electronic band designed to geofence Covid-1
   <img src="https://github.com/arya18mak/Geofencing-using-IoT/assets/55435847/5b2b8a0f-f5ae-4bbf-a3af-40238a116c89" alt="Image Alt Text"><br>
   <b>Fig1: Framework</b>
 </p>
+# UI and Alerts
+
