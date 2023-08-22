@@ -9,7 +9,7 @@ We've developed a wearable consumer electronic band designed to geofence Covid-1
 
 # UI and Alerts
 <p align="center">
-  <img src="https://github.com/arya18mak/Geofencing-using-IoT/assets/55435847/a34f6bb8-8a07-4fa3-930b-88c99df2d8a7" alt="Image Alt Text"><br>
+  <img src="https://github.com/arya18mak/Geofencing-using-IoT/assets/55435847/968dbf43-14c2-4c72-ac5c-c4656de10df4" alt="Image Alt Text"><br>
   <b>Fig2: Room area with coordinates & boundaries</b>
 </p>
 
