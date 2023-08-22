@@ -7,20 +7,11 @@ We've developed a wearable consumer electronic band designed to geofence Covid-1
   <b>Fig1: Framework</b>
 </p>
 
-# User Interface
+## User Interface
 <p align="center">
   <img src="https://github.com/arya18mak/Geofencing-using-IoT/assets/55435847/968dbf43-14c2-4c72-ac5c-c4656de10df4" alt="Image Alt Text"><br>
   <b>Fig2: Position & geofence </b>
 </p>
 <p align="justify">Blue space which is Class 0 indicates that the person is within the boundaries and white space indicates trespassing.</p>
 
-
-
-<p align="center">
-  <img src="https://github.com/arya18mak/Geofencing-using-IoT/assets/55435847/df18609f-1736-4577-a765-9525f112ebd6" alt="Image Alt Text"><br>
-  <b>Fig3: Fence Violated</b>
-</p>
-<p align="justify">Alert sent using IFTTT(IoT platform) triggers</p>
-
-# Usage
 
