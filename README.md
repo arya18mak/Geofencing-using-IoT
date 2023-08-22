@@ -16,6 +16,6 @@ We've developed a wearable consumer electronic band designed to geofence Covid-1
 
 <p align="center">
   <img src="https://github.com/arya18mak/Geofencing-using-IoT/assets/55435847/df18609f-1736-4577-a765-9525f112ebd6" alt="Image Alt Text"><br>
-  <b>Fig3: Room area with coordinates & boundaries</b>
+  <b>Fig3: Fence Violated</b>
 </p>
 
