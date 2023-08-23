@@ -9,7 +9,7 @@ We've developed a wearable consumer electronic band designed to geofence Covid-1
 
 ## User Interface
 <p align="center">
-  <img src="https://github.com/arya18mak/Geofencing-using-IoT/assets/55435847/6affca8f-6413-4c51-a989-30857808745c" alt="Image Alt Text"><br>
+  <img src="https://github.com/arya18mak/Geofencing-using-IoT/assets/55435847/6affca8f-6413-4c51-a989-30857808745c" alt="Image Alt Text" width="150px"><br>
   <b>Fig2: Position & geofence  </b>
 </p> 
 <p align="justify">The band underwent testing within an 18 by 10 sqft room, where the blue area delineates the designated safe region, while the white area indicates that an individual or entity has crossed the established boundary.</p>
