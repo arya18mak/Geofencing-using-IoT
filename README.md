@@ -11,7 +11,7 @@ We've developed a wearable consumer electronic band designed to geofence Covid-1
 <p align="center">
   <img src="https://github.com/arya18mak/Geofencing-using-IoT/assets/55435847/6affca8f-6413-4c51-a989-30857808745c" alt="Image Alt Text"><br>
   <b>Fig2: Position & geofence </b>
-</p>
-<p align="justify">Blue space which is Class 0 indicates that the person is within the boundaries and white space indicates trespassing.</p>
+</p> 
+<p align="justify">This band was tested in a 18 by 10 sqft room were the blue area demonstrates the safe region whereas being in white region indicates the person/entity has crossed the boundary.</p>
 
 
