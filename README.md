@@ -15,4 +15,6 @@ We've developed a wearable consumer electronic band designed to geofence Covid-1
 <p align="justify">The band underwent testing within an 18 by 10 sqft room, where the blue area delineates the designated safe region, while the white area indicates that an individual or entity has crossed the established boundary.</p>
 
 ## Usage
+<p align="center">
 x_cord and y_cord are the trained regressors for 18 by 10 sqft region which had 3 Wifi routers. coordinatescapturexl.csv contains signal readings of the routers at particular coordinates. Flask app can be used as it is by replacing regressors for a particular region. Heroku was used to host the app and the database, IFTTT for triggering requests for alerts.
+</p>
