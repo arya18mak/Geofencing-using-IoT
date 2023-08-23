@@ -14,4 +14,5 @@ We've developed a wearable consumer electronic band designed to geofence Covid-1
 </p> 
 <p align="justify">This band was tested in a 18 by 10 sqft room were the blue area demonstrates the safe region whereas being in white region indicates the person/entity has crossed the boundary.</p>
 
+## Future Scope
 
