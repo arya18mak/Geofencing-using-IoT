@@ -16,5 +16,5 @@ We've developed a wearable consumer electronic band designed to geofence Covid-1
 
 ## Usage
 <p align="justify">
-x_cord and y_cord are the trained regressors for 18 by 10 sqft region which had 3 Wifi routers. coordinatescapturexl.csv contains signal readings of the routers at particular coordinates. Flask app can be used as it is by replacing regressors for a particular region. Heroku was used to host the app and the database, IFTTT for triggering requests for alerts.
+x_cord and y_cord are the trained regressors for 18 by 10 sqft region which had 3 Wifi routers. coordinatescapturexl.csv contains signal readings of the routers at particular coordinates. Flask app can be used as it is by replacing regressors for a particular region. Heroku was used to host the app and the database and IFTTT for triggering requests for alerts.
 </p>
