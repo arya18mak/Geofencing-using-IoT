@@ -141,8 +141,3 @@ git push heroku master
 - **Two-stage ML** — The classifier gives a fast pass/fail boundary check, while the regressor provides finer location detail for the map display.
 - **IFTTT for alerting** — Keeps the notification layer simple and configurable without building a custom messaging backend.
 
----
-
-## 📄 License
-
-This project does not currently specify a license. Please contact the repository owner before using or adapting this code in production.
